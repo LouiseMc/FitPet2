@@ -1,14 +1,106 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      FitPet
     </ion-title>
+     <ion-buttons end>
+      <button ion-button (click)="scan()">
+        Scan
+      </button>
+    </ion-buttons> -->
+  <!-- </ion-navbar>
+</ion-header> --> 
+
+<!-- <ion-content>
+   <ion-list> 
+    <button ion-item *ngFor="let device of devices" (click)="deviceSelected(device)">
+      <h1>{{ device.name || 'Unnamed' }}</h1>
+     
+    </button>  
+   </ion-list> 
+</ion-content> -->
+
+<!-- <ion-footer>
+   <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar> 
+</ion-footer> -->
+
+
+<!-- <ion-header>
+  <ion-navbar>
+    <img ion-right src="assets/imgs/dog.png" class="navbarLogo" />
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <h2>Welcome to FitPet</h2>
+  <button ion-button color="primary" (click)="logout()">Logout</button>
+</ion-content> -->
+<!-- <ion-header>
+    <ion-navbar>
+      <img ion-right src="assets/images/dog.png" class="navbarLogo" />
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Welcome to {{userDetails.name}}</h2>
+    <h3>Email: {{userDetails.email}}</h3>
+    <button ion-button color="primary" (click)="logout()">Logout</button>
+  </ion-content> -->
+
+  <ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Home</ion-title> 
+      <ion-buttons end> 
+          <button ion-button icon-only (click)="logOut()">
+       <ion-icon name="log-out"></ion-icon>
+        </button> 
+  
+      </ion-buttons>
+        
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+ 
+    <h1>Select Dog</h1>
+    <ion-list>
+      <!-- Repeat the ion-item for as many items that we have inside of our shopping list. -->
+      <ion-item *ngFor="let dog of dogListRef$ | async" (click)="selectDog(dog)">
+        <h2>{{dog.name}}</h2>
+        
+      </ion-item>
+    </ion-list>
+   
+
+
+    <!-- <ion-item>
+        <ion-label floating> Name</ion-label>
+        <ion-input type="text" [(ngModel)]="dog.name"></ion-input>
+      </ion-item> -->
+    
+  
+    
+      <!-- <ion-item>
+        <ion-label floating>Number</ion-label>
+        <ion-input type="number" [(ngModel)]="dog.dogNumber"></ion-input>
+      </ion-item>
+     -->
+
+
+
+
+     <!-- <button ion-button block (click)="addDog(dog)">Add Item</button> -->
+     <button ion-button block (click)="addDog()">Add Dog</button>
+
+   
+
+
+
+
+
+
+  </ion-content>

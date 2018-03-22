@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      FitPet
+    </ion-title>
+     <ion-buttons end>
+      <button ion-button (click)="scan()">
+        Scan
+      </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+ <ion-content>
+   <ion-list> 
+    <button ion-item *ngFor="let device of devices" (click)="deviceSelected(device)">
+      <h1>{{ device.name || 'Unnamed' }}</h1>
+     
+    </button>  
+   </ion-list> 
+</ion-content> -->
+
+<!-- <ion-footer>
+   <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar> 
+</ion-footer> -->
+
+
+<!-- <ion-header>
+  <ion-navbar>
+    <img ion-right src="assets/imgs/dog.png" class="navbarLogo" />
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to FitPet</h2>
+  <button ion-button color="primary" (click)="logout()">Logout</button>
+</ion-content> -->
+<!-- <ion-header>
+    <ion-navbar>
+      <img ion-right src="assets/images/dog.png" class="navbarLogo" />
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Welcome to {{userDetails.name}}</h2>
+    <h3>Email: {{userDetails.email}}</h3>
+    <button ion-button color="primary" (click)="logout()">Logout</button>
+  </ion-content> -->
