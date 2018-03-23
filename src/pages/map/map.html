@@ -10,9 +10,13 @@
     <ion-title>map</ion-title>
   </ion-navbar>
 
+  
+
 </ion-header>
 
 
-<ion-content padding>
-  <div #map id="map"></div>
+<ion-content>
+  <div id="map_canvas">
+    <button ion-button (click)="onButtonClick($event)">{{longitude}}{{latitude}} </button>
+  </div>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TabsPage } from '../tabs/tabs';
+
 import { SignupPage } from '../signup/signup';
 //import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { 
@@ -47,7 +47,7 @@ export class LoginPage {
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password)
       .then( authData => {
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.setRoot(HomePage);
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({

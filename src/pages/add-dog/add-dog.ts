@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Dog } from '../../models/dog/dog.interface';
-import {TabsPage} from '../tabs/tabs';
+
 import { Subscription } from 'rxjs/Subscription';
 import {Observable} from  'rxjs/Observable';
 import {
@@ -9,6 +9,7 @@ import {
   FirebaseObjectObservable,
   FirebaseListObservable
 } from 'angularfire2/database-deprecated';
+import { DogPage } from '../dog/dog';
 /**
  * Generated class for the EditDogPage page.
  *
@@ -65,8 +66,8 @@ export class AddDogPage {
 
     // Navigate the user back to the ShoppingListPage
    // this.navCtrl.pop();
-   this.navCtrl.setRoot(TabsPage);
-   
+   //this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.setRoot(DogPage);
   }
 
 }

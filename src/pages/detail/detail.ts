@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { BLE } from '@ionic-native/ble';
+import { TabsPage } from '../tabs/tabs';
+import { MapPage } from '../map/map';
 
 // Bluetooth UUIDs
 const THERMOMETER_SERVICE = 'bbb0';
@@ -8,12 +10,21 @@ const TEMPERATURE_CHARACTERISTIC = 'bbb1';
 const PEDOMETER_SERVICE = '1000';
 const PEDOMETER_CHARACTERISTIC = '1001';
 
+
 @Component({
   selector: 'page-detail',
   templateUrl: 'detail.html',
   
 })
 export class DetailPage {
+
+  public LONG_SERVICE = '1002';
+  public LONG_CHARACTERISTIC = '1003';
+  public LAT_SERVICE = '1004';
+  public LAT_CHARACTERISTIC = '1005';
+  public latitude:any;
+  public longitude:any;
+
 
   peripheral: any = {};
   pedometer: string;
@@ -40,6 +51,14 @@ export class DetailPage {
 
   }
 
+
+  
+
+  map(){
+    this.navCtrl.push(MapPage,{
+      lat: this.latitude,
+      long:this.longitude});
+  }
   // the connection to the peripheral was successful
  onConnected(peripheral) {
 
@@ -47,10 +66,29 @@ this.peripheral = peripheral;
    this.setStatus('Connected to ' + (peripheral.name || peripheral.id));
 this.startStepsNotification();
    this.startTempNotification();
+   this.startLatitudeNotification();
+   this.startLongitudeNotification();
     
 
     
   }   
+
+  startLatitudeNotification() {
+       
+    this.ble.startNotification(this.peripheral.id,this.LAT_SERVICE,this.LAT_CHARACTERISTIC).subscribe((data) => {
+      console.log("Latitude");
+      console.log(new Float32Array(data).toString());
+      this.latitude = new Float32Array(data);
+    })
+  }
+
+  startLongitudeNotification() {
+    this.ble.startNotification(this.peripheral.id, this.LONG_SERVICE,this.LONG_CHARACTERISTIC).subscribe((data) => {
+      console.log("Longitude");
+      console.log(new Float32Array(data).toString());
+      this.longitude = new Float32Array(data);
+    })
+  }
   
   startStepsNotification() {
    this.ble.startNotification(this.peripheral.id, PEDOMETER_SERVICE, PEDOMETER_CHARACTERISTIC).subscribe(
@@ -66,8 +104,29 @@ this.startStepsNotification();
     }
 
 
-
-
+    onLatChange(buffer:ArrayBuffer) {
+        
+      // Temperature is a 4 byte floating point value
+      var data = new Uint32Array(buffer);
+      console.log(data[0]);
+  
+      this.ngZone.run(() => {
+        this.latitude = data[0];
+      });
+  
+    }
+    onLongChange(buffer:ArrayBuffer) {
+      
+          // Temperature is a 4 byte floating point value
+          var data = new Uint32Array(buffer);
+          console.log(data[0]);
+      
+          this.ngZone.run(() => {
+            this.longitude = data[0];
+          });
+      
+        }
+    
 
   onTemperatureChange(buffer:ArrayBuffer) {
 

@@ -3,7 +3,6 @@ import { NavController,ActionSheetController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import {DetailPage} from '../detail/detail';
 import {LoginPage} from '../login/login';
-import {TabsPage} from '../tabs/tabs';
 import {AddDogPage} from '../add-dog/add-dog';
 import {EditDogPage} from '../edit-dog/edit-dog';
 import {SelectDevicePage} from '../select-device/select-device';
@@ -66,7 +65,7 @@ export class HomePage {
 addDog(){
 
  //this.navCtrl.setRoot(AddDogPage);
-  this.navCtrl.setRoot(TabsPage);
+  this.navCtrl.setRoot(AddDogPage);
 
 }
 

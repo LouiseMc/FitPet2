@@ -29,15 +29,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { DatabaseserviceProvider } from '../providers/databaseservice/databaseservice';
 
 
-// import {
-//   GoogleMaps,
-//   GoogleMap,
-//   GoogleMapsEvent,
-//   GoogleMapOptions,
-//   CameraPosition,
-//   MarkerOptions,
-//   Marker
-//  } from '@ionic-native/google-maps';
+import { GoogleMaps} from '@ionic-native/google-maps';
 
 
 
@@ -104,7 +96,7 @@ import { DatabaseserviceProvider } from '../providers/databaseservice/databasese
   ],
   providers: [
      StatusBar,AuthServiceProvider,AuthProvider,
-     
+     GoogleMaps,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BLE,

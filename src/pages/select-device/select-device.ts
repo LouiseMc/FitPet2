@@ -73,7 +73,7 @@ export class SelectDevicePage {
   deviceSelected(device) {
     console.log(JSON.stringify(device) + ' selected');
    // this.navCtrl.push(DetailPage, {
-    this.navCtrl.push(MapPage, {
+    this.navCtrl.push(DetailPage, {
       device: device
     });
   }
